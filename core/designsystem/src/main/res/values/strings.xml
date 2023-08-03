@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hint_text">검색어를 입력해주세요.</string>
+    <string name="book_title">책 제목 : </string>
+    <string name="author_title">저자정보 : </string>
+    <string name="published_date">출간일 : </string>
+    <string name="book_content">내용 : </string>
+    <string name="book_price">가격 : </string>
+    <string name="price_unit">%s원</string>
+
+    <string name="error_text">에러가 발생했습니다.</string>
+    <string name="retry_text">재시도</string>
+</resources>
