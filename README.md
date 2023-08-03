@@ -6,7 +6,7 @@
 - 아키텍처: MVVM
 - View : Compose
 - 비동기 : coroutine
-- 라이브러리 : coil, retrofit2, hilt, paging3, secret, kotlinSerializtion
+- 라이브러리 : coil, retrofit2, hilt, paging3, secret, kotlinSerialization
 - kotlinDSL + versionCatalog 사용
 
 ## 모듈 설명
