@@ -1,5 +1,6 @@
 package com.bradpark.search
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -79,13 +81,16 @@ fun BookColumnItem(
             .wrapContentHeight(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        if (pageNameData.size != 0) {
-            coroutineScope.launch {
-                lazyColumnListState.animateScrollToItem(pageNameData.size - 1)
-            }
-        }
         items(pageNameData) { item ->
-            BookRowPaging(pageData = item, onClickEvent = onClickEvent)
+            BookRowPaging(pageData = item, onRefreshCompleteEvent = {
+
+            },onClickEvent = onClickEvent)
+        }
+    }
+    // LaunchedEffect 키값이 변경될 때 내부 호출
+    LaunchedEffect(key1 = pageNameData.size) {
+        if (pageNameData.size > 0) {
+            lazyColumnListState.animateScrollToItem(pageNameData.size - 1)
         }
     }
 }
@@ -97,6 +102,7 @@ fun BookColumnItem(
 @Composable
 fun BookRowPaging(
     pageData: StateFlow<PagingData<BookData>>,
+    onRefreshCompleteEvent: () -> Unit,
     onClickEvent: (BookData) -> Unit
 ) {
     val paging = pageData.collectAsLazyPagingItems()
@@ -111,6 +117,7 @@ fun BookRowPaging(
             }
         }
         else -> {
+            onRefreshCompleteEvent()
             LazyRow(
                 modifier = Modifier
                     .fillMaxWidth()
