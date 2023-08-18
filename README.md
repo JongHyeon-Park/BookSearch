@@ -43,12 +43,12 @@
  bundle 이 아닌 savestateHandle 을 사용 하여 복구 가능
 
 ## coil 과 glide 장점
- glide 
- * 반복되는 이미지가 많아서 캐시데이터 많이 필요할 때
- * 원본 이미지 사이즈와 ImageView 사이즈 간의 편차가 클 때
- coil
- * 다양한 이미지를 사용해 캐시가 동작하기 어려울 때
- * Image Transform 을 사용하는 부분이 많을 때
+ - glide 
+   * 반복되는 이미지가 많아서 캐시데이터 많이 필요할 때
+   * 원본 이미지 사이즈와 ImageView 사이즈 간의 편차가 클 때
+ - coil
+   * 다양한 이미지를 사용해 캐시가 동작하기 어려울 때
+   * Image Transform 을 사용하는 부분이 많을 때
 
 ## compose UI 해지 (메모리누수 방지)
 setViewCompositionStrategy() 
